@@ -1,5 +1,5 @@
 <h1 align="center">Hi there 👋, I'm Nanda Kishore</h1>
-<h3 align="center">Aspiring Software Engineer | Full Stack Developer | Java Spring Boot & AI Enthusiast</h3>
+<h3 align="center">Aspiring Software Engineer | Full Stack Developer | Java Spring Boot & AI & ML Enthusiast</h3>
 
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&center=true&vCenter=true&width=600&lines=I+build+real-world+projects+with+code.;Full+Stack+%7C+AI+%7C+Spring+Boot+%7C+ML;Let's+innovate+and+solve+real+problems+together!" alt="Typing SVG" />
@@ -29,25 +29,27 @@ Currently working on production-level applications that merge tech with impact.
 
 ### 💼 Projects
 
-#### 🚀 [Novanest](https://github.com/NandaKishore2424/Novanest_AI_Incubation)
-> An AI-powered platform connecting entrepreneurs with mentors and investors.  
-> Features startup profiles, mentor matching, mentorship tracking, and investor pitch showcasing.  
-> 🛠️ Built using **MERN Stack**
+#### [Novanest](https://github.com/NandaKishore2424/novanest)
+> AI-powered platform connecting entrepreneurs, mentors, and investors for startup success. 
+> Built with React.js, Node.js, Express, MongoDB, Tailwind CSS, JWT  
+> Features role-based dashboards, AI-driven startup validation, smart mentor matching, and investor pitch showcasing—streamlining networking, mentorship, and funding
+> Includes secure JWT auth, chatbot integration, real-time suggestions, and dynamic profile/idea management for 3 user types (Entrepreneur, Mentor, Investor)
 
 ---
 
-#### 🌍 [Ecoroute AI](https://github.com/NandaKishore2424/ECOROUTE_AI)
-> AI-powered logistics solution optimizing routes using real-time traffic, capacity & demand data.  
-> Integrated with **IBM Z** to ensure performance, security & sustainability.  
-> Reduces fuel consumption, delays & carbon emissions.
-
+#### [InsightFlow](https://github.com/NandaKishore2424/InsightFlow)
+> Customer Feedback Intelligence Dashboard – A full-stack application for collecting, analyzing, and visualizing customer feedback.
+> Processes 3,000+ reviews with real-time updates and ML-driven insights.  
+> Built using React.js, Node.js, Flask, PostgreSQL, scikit-learn, Socket.IO  
+> Engineered a real-time analytics system for 3,000+ reviews with sentiment analysis (95% accuracy) and LDA topic modeling via Flask & scikit-learn
+> Designed modular UI and integrated Google Charts for visualizing categorized insights and admin workflows
 ---
 
-#### 📘 [RSChemtutor](https://rs-chem-tutor.vercel.app/)
-> Freelance project for a Chemistry tutor (Grades VIII–XII)  
-> React-based responsive website with testimonials, course info, and student enrollment  
-> Highlights interactive teaching methodology
-
+#### [AlertVision](https://github.com/NandaKishore2424/AlertVision-Driver-Drowsiness-Detection)
+> Real-time safety system using webcam input and a CNN model to detect drowsiness by monitoring eye closure.
+> Built with Python, OpenCV, TensorFlow, Keras, Pygame, Haar Cascades
+> Captures webcam feed, detects eyes using Haar cascades, and classifies them as open/closed via a CNN (achieving high accuracy with real-time scoring logic)
+> Triggers an alert sound using Pygame when eyes remain closed for a threshold period—enhancing driver safety by preventing fatigue-related accidents
 ---
 
 ### 💻 Tech Stack & Skills
