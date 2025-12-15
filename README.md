@@ -31,7 +31,7 @@ Currently working on production-level applications that merge tech with impact.
 
 #### [Novanest](https://github.com/NandaKishore2424/novanest)
 > AI-powered platform connecting entrepreneurs, mentors, and investors for startup success. 
-> Built with React.js, Node.js, Express, MongoDB, Tailwind CSS, JWT  
+> Built with React.js, Node.js, Express, MongoDB, Tailwind CSS, JWT 
 > Features role-based dashboards, AI-driven startup validation, smart mentor matching, and investor pitch showcasing—streamlining networking, mentorship, and funding
 > Includes secure JWT auth, chatbot integration, real-time suggestions, and dynamic profile/idea management for 3 user types (Entrepreneur, Mentor, Investor)
 
