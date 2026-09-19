@@ -1,110 +1,112 @@
-<h1 align="center">Hi there 👋, I'm Nanda Kishore</h1>
-<h3 align="center">Aspiring Software Engineer | Full Stack Developer | Java Spring Boot & AI & ML Enthusiast</h3>
+<a href="https://nandakishorer.vercel.app">
+  <img src="./assets/banner.svg" width="100%" alt="Nanda Kishore R, Software Engineer (Backend). Java 17, Spring Boot, PostgreSQL, Python / FastAPI, RabbitMQ." />
+</a>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&center=true&vCenter=true&width=600&lines=I+build+real-world+projects+with+code.;Full+Stack+%7C+AI+%7C+Spring+Boot+%7C+ML;Let's+innovate+and+solve+real+problems+together!" alt="Typing SVG" />
+  <a href="https://nandakishorer.vercel.app"><img src="https://img.shields.io/badge/portfolio-nandakishorer.vercel.app-5eead4?style=flat-square&labelColor=0b1019" alt="Portfolio" /></a>
+  <a href="https://www.linkedin.com/in/nanda-kishore-7290551b8/"><img src="https://img.shields.io/badge/linkedin-nanda--kishore-60a5fa?style=flat-square&labelColor=0b1019" alt="LinkedIn" /></a>
+  <a href="mailto:r.nandakishore24@gmail.com"><img src="https://img.shields.io/badge/email-r.nandakishore24%40gmail.com-fbbf24?style=flat-square&labelColor=0b1019" alt="Email" /></a>
+  <a href="https://nandakishorer.vercel.app/Nanda_Kishore_Resume.pdf"><img src="https://img.shields.io/badge/resume-PDF-a78bfa?style=flat-square&labelColor=0b1019" alt="Resume (PDF)" /></a>
 </p>
 
+```console
+$ curl -s https://nandakishorer.vercel.app/api/whoami | jq
+```
 
----
+```json
+{
+  "name": "Nanda Kishore R",
+  "role": "Software Engineer, Backend",
+  "stack": ["Java 17", "Spring Boot", "PostgreSQL", "Python / FastAPI"],
+  "focus": ["concurrency", "multi-tenancy", "transactions"],
+  "location": "Chennai, IN",
+  "open_to_work": true
+}
+```
 
-### 👨‍💻 About Me
+## `GET /about`
 
-I’m an aspiring software engineer with hands-on experience in **Full Stack Development**, **AI/ML**, and **Java Spring Boot**.  
+Software engineer with one year of full-time onsite experience on a multi-tenant healthcare platform, working across REST APIs and the PostgreSQL data layer: concurrency control, row-level authorization and transactional integrity. I build backend services in **Java 17 / Spring Boot** and **Python / FastAPI**.
 
-I love solving real-world problems through code and collaborating on scalable, meaningful projects.  
+## `GET /experience`
 
-Currently working on production-level applications that merge tech with impact.  
+**Software Developer Intern · Botcode (HealthPilot.ai)** · Chennai · Aug 2025 – Aug 2026 · full-time, onsite
 
----
+That code lives in the company's GitHub organization, so here is the work in words:
 
-### 🎓 Bio
+- Built core modules of a multi-tenant clinic platform that serves multiple hospitals from one PostgreSQL schema: role-based access control, scheduling, clinical charting and billing. I'm the largest contributor to its prescription-pad module (56% of the current code).
+- Closed a duplicate-record race in clinical chart saves by moving the invariant into PostgreSQL: a partial unique index plus an `ON CONFLICT` upsert inside one stored procedure, with an idempotent backfill for tenants that already held duplicates.
+- Hardened an AI clinical-recommendations feature before release. I fixed a row-level-security policy that never verified patient ownership, scoped reads to the authoring clinician, enforced organization and role checks on writes, and made a read-modify-write settings update atomic. That added 40 tests, including a concurrency regression.
+- Retired a legacy workflow engine (116 files and 45 API routes), dropping 9 tables and 9 functions in one transactional migration, and documented 150 defects and the safe-deletion rules in an architecture decision record.
 
-- 🧑‍🎓 **B.E. ECE Student** at Saveetha Engineering College  
-- 📊 Minors in **Data Science**  
-- 💡 Participated in multiple hackathons and tech events  
-- 🛠 Comfortable with **VS Code**, **IntelliJ**, **Git**, and **Docker**
+<sub>~650 commits · 138 automated test cases · 7 architecture decision records in 12 months</sub>
 
----
+## `GET /projects`
 
-### 💼 Projects
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/NandaKishore2424/SkillBridgeV2">SkillBridge</a></h3>
+      <sub>Multi-tenant training-management API</sub>
+      <p>Colleges run placement-training batches for admins, trainers and students, with every college isolated inside one shared schema.</p>
+      <ul>
+        <li>20 REST controllers, 122 endpoints, 26 JPA entities, and four-role access control through 113 method-level <code>@PreAuthorize</code> rules</li>
+        <li>Shared-schema tenant isolation: a Hibernate filter plus a 404-not-403 ownership guard</li>
+        <li>Transactional outbox to RabbitMQ with a <code>SKIP LOCKED</code> relay, publisher confirms and a dead-letter store. Tested by killing a real broker for five minutes: all 601 events were delivered, none went dead.</li>
+        <li>Removed three N+1 query patterns, with a test that fails if a read path's SQL statement count grows with data size</li>
+      </ul>
+      <p><img src="https://skillicons.dev/icons?i=java,spring,postgres,rabbitmq,docker&theme=dark" height="32" alt="Java, Spring, PostgreSQL, RabbitMQ, Docker" /></p>
+      <p><a href="https://nandakishorer.vercel.app/projects/skillbridge"><b>Case study →</b></a> · <a href="https://github.com/NandaKishore2424/SkillBridgeV2">Source</a></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/NandaKishore2424/integronix">Integronix</a></h3>
+      <sub>Agentic revenue-audit pipeline for medical coding</sub>
+      <p>Turns clinical notes into ICD-10-CM and CPT billing suggestions for a person to review. The LLM makes one extraction call; deterministic code makes every billing decision.</p>
+      <ul>
+        <li>10-node LangGraph pipeline on FastAPI, with pgvector retrieval only as a fallback</li>
+        <li>A 1,025-line deterministic decision engine (41% of the pipeline); fixed an upcoding defect where longer, rarer codes outranked better-documented ones</li>
+        <li>Claim adjudication moved into one PostgreSQL function with an optimistic lock: when two approvals race, one succeeds and one gets 409 Conflict. Money is Decimal, quantized to the cent.</li>
+        <li>359 tests, including a schema-contract test against the real database</li>
+      </ul>
+      <p><img src="https://skillicons.dev/icons?i=python,fastapi,postgres,docker,aws&theme=dark" height="32" alt="Python, FastAPI, PostgreSQL, Docker, AWS" /></p>
+      <p><a href="https://nandakishorer.vercel.app/projects/integronix"><b>Case study →</b></a> · <a href="https://github.com/NandaKishore2424/integronix">Source</a></p>
+    </td>
+  </tr>
+</table>
 
-#### [Novanest](https://github.com/NandaKishore2424/novanest)
-> AI-powered platform connecting entrepreneurs, mentors, and investors for startup success. 
-> Built with React.js, Node.js, Express, MongoDB, Tailwind CSS, JWT 
-> Features role-based dashboards, AI-driven startup validation, smart mentor matching, and investor pitch showcasing—streamlining networking, mentorship, and funding
-> Includes secure JWT auth, chatbot integration, real-time suggestions, and dynamic profile/idea management for 3 user types (Entrepreneur, Mentor, Investor)
+## `GET /stack`
 
----
-
-#### [InsightFlow](https://github.com/NandaKishore2424/InsightFlow)
-> Customer Feedback Intelligence Dashboard – A full-stack application for collecting, analyzing, and visualizing customer feedback.
-> Processes 3,000+ reviews with real-time updates and ML-driven insights.  
-> Built using React.js, Node.js, Flask, PostgreSQL, scikit-learn, Socket.IO  
-> Engineered a real-time analytics system for 3,000+ reviews with sentiment analysis (95% accuracy) and LDA topic modeling via Flask & scikit-learn
-> Designed modular UI and integrated Google Charts for visualizing categorized insights and admin workflows
----
-
-#### [AlertVision](https://github.com/NandaKishore2424/AlertVision-Driver-Drowsiness-Detection)
-> Real-time safety system using webcam input and a CNN model to detect drowsiness by monitoring eye closure.
-> Built with Python, OpenCV, TensorFlow, Keras, Pygame, Haar Cascades
-> Captures webcam feed, detects eyes using Haar cascades, and classifies them as open/closed via a CNN (achieving high accuracy with real-time scoring logic)
-> Triggers an alert sound using Pygame when eyes remain closed for a threshold period—enhancing driver safety by preventing fatigue-related accidents
----
-
-### 💻 Tech Stack & Skills
-
-#### 🧠 Languages  
 <p>
-  <img src="https://skillicons.dev/icons?i=java,python,c,html,css,sql" />
+  <img src="https://skillicons.dev/icons?i=java,spring,python,fastapi,ts,postgres,rabbitmq,docker,aws,githubactions,git&theme=dark" alt="Java, Spring, Python, FastAPI, TypeScript, PostgreSQL, RabbitMQ, Docker, AWS, GitHub Actions, Git" />
 </p>
 
-#### ⚙️ Frameworks / Libraries  
-<p>
-  <img src="https://skillicons.dev/icons?i=react,next,nodejs,express,spring,django,flask" />
-</p>
+| Layer | What I use |
+|---|---|
+| **Build** | Java 17 · Spring Boot · Spring Security · JPA / Hibernate · REST APIs · JWT · Python · FastAPI |
+| **Data & messaging** | PostgreSQL · RabbitMQ · Flyway · pgvector |
+| **Prove** | JUnit · Mockito · Testcontainers · ArchUnit · pytest |
+| **Ship** | Docker · AWS (EC2) · GitHub Actions · CI/CD · Git · Agile / Scrum (Linear) · code review |
+| **Concepts** | object-oriented design · design patterns · multi-tenancy · concurrency · transactions · indexing · LangGraph · RAG · vector search |
 
-#### 🗃️ Databases  
-<p>
-  <img src="https://skillicons.dev/icons?i=mongodb,mysql" />
-</p>
+## `GET /education`
 
-#### 🔧 Tools & Platforms  
-<p>
-  <img src="https://skillicons.dev/icons?i=git,github,docker,idea,vscode" />
-</p>
+**BE, Electronics and Communication Engineering** · Saveetha Engineering College · 2022 – 2026 · CGPA 8.98 / 10
 
----
+- Published an IEEE conference paper on [lightweight deep learning for white blood cell counting](https://ieeexplore.ieee.org/document/11497191)
+- Winner, Hardware Track, AMD Pervasive AI Developer Challenge · finalist, Virtusa hackathon
+- GeeksforGeeks Campus Ambassador · symposium coordinator (10+ workshops for 300+ students)
+- Certifications: Programming in Java (NPTEL, IIT Kharagpur) · AWS Cloud Solutions Architect (Coursera) · Efficient LLM Customization (NVIDIA)
 
-### 📊 GitHub Stats & Activity
+## `GET /activity`
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=NandaKishore2424&show_icons=true&theme=tokyonight&hide_border=false" width="48%" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=NandaKishore2424&theme=tokyonight&hide_border=false" width="48%" />
-</p>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/NandaKishore2424/NandaKishore2424/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/NandaKishore2424/NandaKishore2424/output/github-snake.svg" />
+  <img alt="My contribution graph, eaten by a snake" src="https://raw.githubusercontent.com/NandaKishore2424/NandaKishore2424/output/github-snake.svg" />
+</picture>
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=NandaKishore2424&layout=compact&theme=tokyonight" width="48%" />
-</p>
+## `POST /contact`
 
----
+Hiring for a backend role, or want to talk about Spring Boot, PostgreSQL or messaging? Email [r.nandakishore24@gmail.com](mailto:r.nandakishore24@gmail.com), message me on [LinkedIn](https://www.linkedin.com/in/nanda-kishore-7290551b8/), or use the form on [my portfolio](https://nandakishorer.vercel.app/#contact).
 
-### 🌐 Let's Connect
-
-<p align="left">
-  <a href="https://www.linkedin.com/in/nanda-kishore-7290551b8/" target="_blank"><img align="center" src="https://skillicons.dev/icons?i=linkedin" height="40" alt="linkedin"/></a>
-  <a href="mailto:r.nandakishore24@gmail.com" target="_blank"><img align="center" src="https://skillicons.dev/icons?i=gmail" height="40" alt="email"/></a>
-</p>
-
----
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=NandaKishore2424&theme=onestar&row=1&column=7" alt="trophies" />
-</p>
-
-<p align="center">
-  <img src="https://activity-graph.herokuapp.com/graph?username=NandaKishore2424&theme=react-dark&hide_border=true&area=true" />
-</p>
-
----
-⭐️ *Thanks for visiting my profile! Feel free to explore my projects and connect!*
+<sub>HTTP/1.1 200 OK · connection: keep-alive</sub>
